@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  environment:
+      http_proxy: http://localhost:1081
+      https_proxy: http://localhost:1081
+  tasks:
+  - import_role: 
+      name: common
+  - import_role: 
+      name: utilities
+  - import_role: 
+      name: ohmyzsh
+  - import_role: 
+      name: v2ray
+    vars:
+      mode: client-office
+  - import_role: 
+      name: devtool
+
+  # - import_role:
+  #     name: ml
+    
+
+
+ 
+ 

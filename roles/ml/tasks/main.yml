@@ -1,0 +1,44 @@
+---
+- name: add repo keys  
+  apt_repository:
+    repo: deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic main 
+    state: present
+    
+- name: install deveolopment tools
+  become: yes
+  apt: 
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nvidia-driver-396 
+
+- name: Download cuda
+  become: yes
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    mode: 0550
+  with_items:
+    - {url: "https://developer.nvidia.com/compute/cuda/9.2/Prod2/local_installers/cuda_9.2.148_396.37_linux", dest: "/tmp/cuda_9.2.148_396.37_linux.run"}
+    - {url: "https://developer.nvidia.com/compute/cuda/9.2/Prod2/patches/1/cuda_9.2.148.1_linux", dest: "/tmp/cuda_9.2.148.1_linux.run"}
+
+- name: install cuda
+  become: yes
+  command: "{{ item }}"
+  with_items:
+    - /tmp/cuda_9.2.148_396.37_linux.run --verbose --silent --toolkit --override
+    - /tmp/cuda_9.2.148.1_linux.run --silent --accept-eula
+
+- name: LD_LIBRARY_PATH
+  become: yes
+  copy: 
+    content: '/usr/local/cuda-9.2/lib64'
+    dest: '/etc/ld.so.conf.d/cuda.conf' 
+
+- name: install cudnn
+  become: yes
+  apt:
+    deb: "{{ item }}"
+  with_items:
+    - https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_7.2.1.38-1+cuda9.2_amd64.deb
+    - https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7-dev_7.2.1.38-1+cuda9.2_amd64.deb    

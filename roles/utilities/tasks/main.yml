@@ -1,0 +1,8 @@
+---
+- name: install utilities
+  become: true
+  apt:
+    deb: "{{ item }}"
+  with_items:
+    - https://github.com/ramboxapp/community-edition/releases/download/0.5.17/Rambox_0.5.17-x64.deb
+    - https://download.opensuse.org/repositories/home:/colomboem/xUbuntu_12.04/amd64/dukto_6.0-1_amd64.deb

@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+  - import_role: 
+      name: v2ray
+    vars:
+      mode: server-personal
+    
