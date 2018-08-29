@@ -1,5 +1,4 @@
----
-- name: add repo keys  
+- name: add repo keys
   become: yes
   apt_key:
     url: "{{ item }}"
@@ -14,15 +13,24 @@
   apt_repository:
     repo: "{{ item.repo }}"
     filename: "{{ item.filename}}"
-    state: present
+    state: latest
   with_items:
-    - { filename: "vscode",    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"}
-    - { filename: "yarn",      repo: "deb https://dl.yarnpkg.com/debian/ stable main"}
-    - { filename: "docker-ce", repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"}
+    - {
+        filename: "vscode",
+        repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main",
+      }
+    - {
+        filename: "yarn",
+        repo: "deb https://dl.yarnpkg.com/debian/ stable main",
+      }
+    - {
+        filename: "docker-ce",
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable",
+      }
 
 - name: install deveolopment tools
   become: yes
-  apt: 
+  apt:
     name: "{{ item }}"
     state: latest
   with_items:
@@ -31,9 +39,9 @@
     - docker-ce
     - openjdk-8-jdk
     - openjdk-11-jdk
-    
+
 - name: install jenv
-  git: 
+  git:
     repo: https://github.com/gcuisinier/jenv.git
     dest: ~/.jenv
 
@@ -42,6 +50,14 @@
     repo: https://github.com/kennethreitz/autoenv.git
     dest: ~/.autoenv
 
+- name: instal virtualbox vagrant
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - virtualbox
+    - vagrant
+
 # - name: install android studio
 #   become: true
-#   command: snap install android-studio --classic    
+#   command: snap install android-studio --classic
