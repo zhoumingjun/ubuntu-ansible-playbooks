@@ -17,3 +17,4 @@
     - vim
     - zsh
     - fonts-firacode
+    - libpng-dev
