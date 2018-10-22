@@ -23,14 +23,14 @@ sudo apt-get update
 sudo apt-get install -y ansible git curl wget openssh-server
 
 # step 3
-print_step 3 "clone git@github.com:zhoumingjun/ansible-playbooks.git"
+print_step 3 "clone git@github.com:zhoumingjun/ubuntu-ansible-playbooks.git"
 
-git clone git@github.com:zhoumingjun/ansible-playbooks.git ~/github.com/zhoumingjun/ansible-playbooks
+git clone git@github.com:zhoumingjun/ubuntu-ansible-playbooks.git ~/github.com/zhoumingjun/ubuntu-ansible-playbooks
 
 # step 4
 print_step 4 "run playbook"
 
-cd  ~/github.com/zhoumingjun/ansible-playbooks
+cd  ~/github.com/zhoumingjun/ubuntu-ansible-playbooks
 ansible-playbook dev.yml -i hosts --connection local --ask-become-pass --vault-id @vaultid  -vv
  
 # step 5

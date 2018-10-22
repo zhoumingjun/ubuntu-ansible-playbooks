@@ -1,7 +1,8 @@
 ---
-- name: add repo keys  
+- name: add repo keys 
+  become: yes 
   apt_repository:
-    repo: deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic main 
+    repo: 'ppa:graphics-drivers/ppa'
     state: present
     
 - name: install deveolopment tools

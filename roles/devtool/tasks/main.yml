@@ -13,7 +13,7 @@
   apt_repository:
     repo: "{{ item.repo }}"
     filename: "{{ item.filename}}"
-    state: latest
+    state: present
   with_items:
     - {
         filename: "vscode",
@@ -51,6 +51,7 @@
     dest: ~/.autoenv
 
 - name: instal virtualbox vagrant
+  become: yes
   apt:
     name: "{{ item }}"
     state: latest

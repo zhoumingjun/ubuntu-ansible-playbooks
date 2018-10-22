@@ -22,7 +22,7 @@
 
 - name: Create symbolic link 
   become: true
-  file:exit
+  file:
     src: "/etc/v2ray/config-{{mode}}.json"
     dest: "/etc/v2ray/config.json"
     force: yes 
