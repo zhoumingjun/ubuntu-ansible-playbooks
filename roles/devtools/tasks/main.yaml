@@ -28,6 +28,40 @@
         repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable",
       }
 
+
+- name: install basic
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+
+
+- name: install fonts
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - fonts-firacode
+    - fonts-powerline
+
+- name: install commons
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - git
+    - keepassxc  
+    - terminator
+    - vim
+    - zsh
+
+
 - name: install deveolopment tools
   become: yes
   apt:
@@ -50,15 +84,11 @@
     repo: https://github.com/kennethreitz/autoenv.git
     dest: ~/.autoenv
 
-- name: instal virtualbox vagrant
-  become: yes
-  apt:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - virtualbox
-    - vagrant
+ 
 
-# - name: install android studio
-#   become: true
-#   command: snap install android-studio --classic
+- name: install utilities
+  become: true
+  apt:
+    deb: "{{ item }}"
+  with_items:
+    - https://download.opensuse.org/repositories/home:/colomboem/xUbuntu_12.04/amd64/dukto_6.0-1_amd64.deb
