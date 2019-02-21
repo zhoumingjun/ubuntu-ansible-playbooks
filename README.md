@@ -1,15 +1,10 @@
 # ansible-playbooks
 
-## prepare vaultid file
-```
-ln -s ~/Dropbox/ansible-vault-id/ansible-playbooks vaultid
-```
+sudo apt-get install git
+git clone https://github.com/zhoumingjun/ubuntu-ansible-playbooks.git
+cd ubuntu-ansible-playbooks
+git checkout office
+./install.sh
 
-## encrypt/decrypt sensitive information
-```
-ansible-vault encrypt roles/v2ray/files/* --vault-id @vaultid
-ansible-vault decrypt roles/v2ray/files/* --vault-id @vaultid
-```
 
-## references   
-* miniconda: https://github.com/robinandeer/ansible-miniconda
+ 

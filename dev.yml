@@ -2,18 +2,9 @@
 - hosts: localhost
   tasks:
   - import_role: 
-      name: common
-  - import_role: 
-      name: devtool      
-  - import_role: 
-      name: utilities
-  - import_role: 
-      name: ohmyzsh
+      name: devtools
 
-  # - import_role
-  #     name: miniconda   
-  - import_role:
-      name: ml
+
     
 
 
