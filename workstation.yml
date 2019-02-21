@@ -1,0 +1,26 @@
+---
+- name: Ubuntu development environment playbook
+  hosts: localhost
+  tasks:
+  # common
+  - import_role: name=system
+
+  # desktop gui tools
+  - import_role: name=tools
+
+  # development
+  - import_role: name=docker
+  - import_role: name=java
+  - import_role: name=vscode
+  - import_role: name=yarn
+
+
+
+       
+
+
+    
+
+
+ 
+ 

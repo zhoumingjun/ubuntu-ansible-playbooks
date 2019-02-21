@@ -1,0 +1,21 @@
+- name: add docker-ce key
+  become: yes
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add docker-ce repo
+  become: yes
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    filename: docker-ce
+    state: present
+
+- name: install docker-ce package
+  become: yes
+  apt:
+    name: docker-ce
+    state: latest
+ 
+
+ 

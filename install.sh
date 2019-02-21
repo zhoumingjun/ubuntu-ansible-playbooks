@@ -19,6 +19,6 @@ fi
 # Display real installation process #
 echo ""
 echo "Customize the playbook ansible-desktop.yml to suit your needs, then run ansible with :"
-echo "  ansible-playbook dev.yml -i hosts --connection local --ask-become-pass -vv"
+echo "  ansible-playbook workstation.yml -i hosts --connection local --ask-become-pass -vv"
 echo ""
 

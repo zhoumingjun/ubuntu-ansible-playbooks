@@ -1,0 +1,21 @@
+- name: install gui packages from repo
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - filezilla
+    - keepassxc  
+    - terminator
+
+- name: install gui packages from online deb
+  become: true
+  apt:
+    deb: "{{ item }}"
+  with_items:
+    # dukto
+    - https://download.opensuse.org/repositories/home:/colomboem/xUbuntu_12.04/amd64/dukto_6.0-1_amd64.deb
+    # hyper
+    - https://releases.hyper.is/download/deb
+
+

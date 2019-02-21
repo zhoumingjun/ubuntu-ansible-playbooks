@@ -1,0 +1,8 @@
+- name: install jdk packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - openjdk-8-jdk
+    - openjdk-11-jdk

@@ -1,0 +1,29 @@
+- name: install common
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - git
+    - software-properties-common
+    - vim
+    - zsh
+ 
+- name: install fonts
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - fonts-firacode
+    - fonts-powerline
+
+- name: install input method
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - ibus-rime
