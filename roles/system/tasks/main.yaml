@@ -6,8 +6,10 @@
   with_items:
     - apt-transport-https
     - ca-certificates
+    - expect
     - git
     - software-properties-common
+    - tree
     - vim
     - zsh
  

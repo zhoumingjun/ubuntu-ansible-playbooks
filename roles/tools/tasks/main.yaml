@@ -1,15 +1,17 @@
-- name: install gui packages from repo
+- name: install packages from repo
   become: yes
   apt:
     name: '{{ item }}'
     state: present
   with_items:
+    - evolution
+    - evolution-ews
     - filezilla
+    - guake
     - keepassxc  
     - terminator
-    - guake
-
-- name: install gui packages from online deb
+ 
+- name: install packages from online deb
   become: true
   apt:
     deb: "{{ item }}"
