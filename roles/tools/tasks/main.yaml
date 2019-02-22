@@ -7,6 +7,7 @@
     - filezilla
     - keepassxc  
     - terminator
+    - guake
 
 - name: install gui packages from online deb
   become: true

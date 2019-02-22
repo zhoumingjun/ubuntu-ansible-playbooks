@@ -14,7 +14,7 @@
 - name: install vscode package
   become: yes
   apt:
-    name: vscode
+    name: code
     state: latest
  
 
