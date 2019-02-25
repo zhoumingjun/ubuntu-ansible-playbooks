@@ -12,6 +12,7 @@
     - tree
     - vim
     - zsh
+    
  
 - name: install fonts
   become: yes

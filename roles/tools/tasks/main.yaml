@@ -10,6 +10,9 @@
     - guake
     - keepassxc  
     - terminator
+    - shadowsocks-libev
+    - shutter
+    - zeal
  
 - name: install packages from online deb
   become: true
