@@ -13,6 +13,7 @@
     - shadowsocks-libev
     - shutter
     - zeal
+    - apache2-utils
  
 - name: install packages from online deb
   become: true
